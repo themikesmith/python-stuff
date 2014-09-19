@@ -1,0 +1,57 @@
+File info:
+
+corpus_scrape_html.py
+== Python script, crawls any list of websites (see 'sites.txt' and 'never_sites.txt') and downloads all HTML files, PDFs, Word Documents, etc.  Content types specified in the code.  Avoids sites specified in 'never_sites'.
+"""Usage:
+    %s [url_list] [urls_never_crawl]
+where [url_list] is a list of base urls to crawl, one per line
+and [urls_never_crawl] is a list of urls never to crawl, one per line.
+Note that the script prints progress to stderr, and that one may pipe stderr to its own file, like the following
+    %s [url_list] [urls_never_crawl] 2> [error_file]
+for ease of analysis.
+
+counter.py
+== Script not authored by me - implementation of a Counter class in Python.  Map of item -> running count
+
+get_twitter_data.py
+== Python script, given a list of twitter handles (see twitter_handles.txt), for each handle, gets all recent tweets.  in these recent tweets, for each new handle mentioned, downloads all their tweets.  (depth 1 BFS).  Depth variable in code.
+Note that I registered and defined my own Twitter Application code / info / login key / whatever.  You'd need to replace with your own.
+"""This script gathers corpora from each user who has replied to the handle(s) listed.
+    usage: %s [file_list_handles]
+where [file_list_handles] is a file that lists handles to use as roots of the tree.
+The script performs a search to a depth of 2, outputting corpora for each user found.
+
+organize.sh
+== given output of corpus_scrape_html, shell script to organize and zip all files of a specific content type together (HTMLs, PDFs, Docs, other)
+
+parse_assemble_stats.py
+== draft of parsing and assembling NLP stats given a body of text.  Unnecessary given 3rd party libraries, but I wasn't sure when I wrote them that I'd have access to any.
+"""usage: %s [xml-file] [plaintext-file]
+This script extracts all plain text from the Wikipedia XML file and writes to the desired text file.
+It also analyzes and computes data for features.
+"""
+Note that the Wikipedia XML dump had a bunch of [[...]] symbols.  Safe to ignore that or delete that code if it's inapplicable.
+
+parse_assemble_stats_parsing.py
+parse_assemble_stats_pos.py
+== (potentially finished?) 
+== versions of the previous statistics script that add POS features and features from grammatical parses.
+
+parse_xml_text.py
+"""usage: %s [xml-file] [plaintext-file]
+This script extracts all plain text from the Wikipedia XML file
+and writes to the desired text file
+"""
+
+README
+== this file, duh
+
+sites.txt
+never_sites.txt
+twitter_handles.txt
+== supporting text files listing information as parameters for python scripts.
+tagset.txt
+== supporting text file - the Penn Treebank tagset.
+
+vimrc
+== my .vimrc file.  lots of fun tweaks assembled from the interwebz, for which I take zero credit.
