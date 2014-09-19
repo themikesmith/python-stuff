@@ -74,10 +74,11 @@ def get_all_tweets(api, handle, id_str = None, max = None, max_id = None, num_at
     # tweets might be protected
     try:
         newtweets = []
-        if id_str is not None:
-            newtweets = api.user_timeline(id_str = id_str, count = max_per_timeline_access, max_id = max_id)
-        else:
-            newtweets = api.user_timeline(screen_name = handle, count = max_per_timeline_access, max_id = max_id)
+        #if id_str is not None:
+        #    newtweets = api.user_timeline(id_str = id_str, count = max_per_timeline_access, max_id = max_id)
+        #else:
+        #    newtweets = api.user_timeline(screen_name = handle, count = max_per_timeline_access, max_id = max_id)
+        newtweets = api.user_timeline(screen_name = handle, count = max_per_timeline_access, max_id = max_id)
         tweets.extend(newtweets)
         if not len(tweets):
             return tweets
@@ -89,7 +90,7 @@ def get_all_tweets(api, handle, id_str = None, max = None, max_id = None, num_at
             tweets.extend(newtweets)
             oldest = tweets[-1].id
             max_id = oldest - 1
-            print >> sys.stderr, '%d tweets downloaded so far. max_id:%s' % (len(tweets), max_id)
+            print >> sys.stderr, '%d tweets downloaded so far from %s. max_id:%s' % (len(tweets), handle, max_id)
             if max is not None and len(tweets) > max:
                 break
     except HTTPException as e:
